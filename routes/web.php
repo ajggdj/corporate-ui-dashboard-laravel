@@ -9,6 +9,9 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\configuracionCotroller;
 use App\Http\Controllers\usuariosController;
+use App\Http\Controllers\EmployeesCotroller;
+use App\Http\Controllers\reportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -106,8 +109,27 @@ Route::post('/configuracion/eliminar-cantidad/{id}',[configuracionCotroller::cla
 Route::post('/subir-imagen',[configuracionCotroller::class, 'logoimagen'])->name('configuracion.logoimagen')->middleware('auth');
 
 //usuarios
-Route::get('/usuarios', [usuariosController::class, 'index'])->name('usuarios.index');
-Route::post('/usuarios/nuevo',[usuariosController::class, 'addusuarios'])->name('usuarios.addusuarios');
-Route::post('/usuarios/editusuarios/{id}',[usuariosController::class, 'editusuarios'])->name('usuarios.editusuarios');
-Route::post('/usuarios/eliminar-usuarios/{id}',[usuariosController::class, 'eliminarusuarios'])->name('usuarios.eliminarusuarios');
-Route::post('/usuarios/activar-usuarios/{id}',[usuariosController::class, 'activarusuarios'])->name('usuarios.activarusuarios');
+Route::get('/usuarios', [usuariosController::class, 'index'])->name('usuarios.index')->middleware('auth');
+Route::post('/usuarios/nuevo',[usuariosController::class, 'addusuarios'])->name('usuarios.addusuarios')->middleware('auth');
+Route::post('/usuarios/editusuarios/{id}',[usuariosController::class, 'editusuarios'])->name('usuarios.editusuarios')->middleware('auth');
+Route::post('/usuarios/eliminar-usuarios/{id}',[usuariosController::class, 'eliminarusuarios'])->name('usuarios.eliminarusuarios')->middleware('auth');
+Route::post('/usuarios/activar-usuarios/{id}',[usuariosController::class, 'activarusuarios'])->name('usuarios.activarusuarios')->middleware('auth');
+
+//empelados
+Route::get('/empleados',[EmployeesCotroller::class, 'index'])->name('empleados.index')->middleware('auth');
+Route::post('/empleados/nuevo',[EmployeesCotroller::class, 'addempleado'])->name('empleados.add')->middleware('auth');
+Route::post('/empleados/editar/{id}',[EmployeesCotroller::class, 'editar'])->name('empleados.editar')->middleware('auth');
+Route::post('/empleados/eliminar/{id}',[EmployeesCotroller::class, 'eliminar'])->name('empleados.eliminar')->middleware('auth');
+Route::post('/import', [EmployeesCotroller::class,"import"])->name('empleados.import')->middleware('auth');
+Route::get('/export-empleados',[EmployeesCotroller::class,'exportEmpleados'])->name('exportEmpleados')->middleware('auth');
+
+//reportes
+Route::get('/reportes', [reportController::class, 'index'])->name('report.index');
+Route::get('/reportesmaquinaria', [reportController::class, 'indexmaquinaria'])->name('report.indexmaquinaria');
+Route::get('/detalles/{id}', [reportController::class, 'detalles'])->name('report.detalles');
+Route::get('/detalles/maquinaria/{id}', [reportController::class, 'detallesmaquina'])->name('report.detallesmaquina');
+Route::post('/guardarFecha/{id}', [reportController::class, 'detallesmaquinafecha'])->name('report.detallesmaquinafecha');
+Route::get('generate-pdf/{id}', [reportController::class, 'generatePDF'])->name('report.pdf');
+Route::get('generate-pdf-normal/{id}', [reportController::class, 'generatePDFnormal'])->name('report.generatePDFnormal');
+Route::post('/eliminardetalle/{id}', [reportController::class, 'eliminardetalle'])->name('report.eliminardetalle');
+Route::post('/eliminardetallemaquina/{id}', [reportController::class, 'eliminardetallemaquina'])->name('report.eliminardetallemaquina');
