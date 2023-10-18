@@ -2,10 +2,18 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand d-flex align-items-center m-0"
-            href=" https://demos.creative-tim.com/corporate-ui-dashboard/pages/dashboard.html " target="_blank">
-            <span class="font-weight-bold text-lg">Corporate UI</span>
-        </a>
+            @if (App\Models\ConfigSites::logo())
+            <a class="navbar-brand d-flex align-items-center m-0"
+            href="·" target="_blank">
+                <img src="{{ asset('/logo/'.App\Models\ConfigSites::logo()->first()->opciones) }}" class="rounded mx-auto d-block" width="300" height="163">
+            </a>
+                @else
+                <a class="navbar-brand d-flex align-items-center m-0"
+            href="#" target="_blank">
+                    <span class="font-weight-bold text-lg">Logo</span>
+                </a>
+                @endif
+
     </div>
     <div class="collapse navbar-collapse px-4  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
@@ -16,7 +24,7 @@
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>dashboard</title>
+                            <title>Ordenes</title>
                             <g id="dashboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="template" transform="translate(12.000000, 12.000000)" fill="#FFFFFF"
                                     fill-rule="nonzero">
@@ -33,7 +41,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Ordenes</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -42,7 +50,7 @@
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>table</title>
+                            <title>Inventario</title>
                             <g id="table" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="view-grid" transform="translate(12.000000, 12.000000)" fill="#FFFFFF"
                                     fill-rule="nonzero">
@@ -62,7 +70,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">Inventario</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -71,7 +79,7 @@
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>wallet</title>
+                            <title>Reportes</title>
                             <g id="wallet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="credit-card" transform="translate(12.000000, 15.000000)" fill="#FFFFFF">
                                     <path class="color-background"
@@ -84,7 +92,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Wallet</span>
+                    <span class="nav-link-text ms-1">Reportes</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -93,7 +101,7 @@
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>rtl</title>
+                            <title>Empleados</title>
                             <g id="rtl" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="menu-alt-3" transform="translate(12.000000, 14.000000)" fill="#FFFFFF">
                                     <path class="color-foreground"
@@ -109,7 +117,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">RTL</span>
+                    <span class="nav-link-text ms-1">Empleados</span>
                 </a>
             </li>
             <li class="nav-item mt-2">
@@ -120,22 +128,22 @@
                             d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
                             clip-rule="evenodd" />
                     </svg>
-                    <span class="font-weight-normal text-md ms-2">Laravel Examples</span>
+                    <span class="font-weight-normal text-md ms-2">Configuración</span>
                 </div>
             </li>
             <li class="nav-item border-start my-0 pt-2">
                 <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('users.profile') ? 'active' : '' }}"
-                    href="{{ route('users.profile') }}">
-                    <span class="nav-link-text ms-1">User Profile</span>
+                    href="{{ route('usuarios.index') }}">
+                    <span class="nav-link-text ms-1">Usuarios</span>
                 </a>
             </li>
             <li class="nav-item border-start my-0 pt-2">
                 <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('users-management') ? 'active' : '' }}"
-                    href="{{ route('users-management') }}">
-                    <span class="nav-link-text ms-1">User Management</span>
+                    href="{{ route('configuracion.index') }}">
+                    <span class="nav-link-text ms-1">Configuración <br>de la pagina</span>
                 </a>
             </li>
-            <li class="nav-item mt-2">
+            {{--<li class="nav-item mt-2">
                 <div class="d-flex align-items-center nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="ms-2"
                         viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -192,5 +200,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </aside>

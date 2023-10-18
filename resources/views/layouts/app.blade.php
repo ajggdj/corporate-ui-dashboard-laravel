@@ -66,6 +66,7 @@
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">

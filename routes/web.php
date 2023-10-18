@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\configuracionCotroller;
+use App\Http\Controllers\usuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,3 +89,25 @@ Route::post('/reset-password', [ResetPasswordController::class, 'store'])
 Route::get('/laravel-examples/user-profile', [ProfileController::class, 'index'])->name('users.profile')->middleware('auth');
 Route::put('/laravel-examples/user-profile/update', [ProfileController::class, 'update'])->name('users.update')->middleware('auth');
 Route::get('/laravel-examples/users-management', [UserController::class, 'index'])->name('users-management')->middleware('auth');
+
+//configuracion del sistema
+Route::get('/configuracion',[configuracionCotroller::class, 'index'])->name('configuracion.index')->middleware('auth');
+// Mercacia
+Route::post('/configuracion/nuevo',[configuracionCotroller::class, 'addtipomercancia'])->name('configuracion.addtipomercancia')->middleware('auth');
+Route::post('/configuracion/edittm/{id}',[configuracionCotroller::class, 'edittipomercancia'])->name('configuracion.edittipomercancia')->middleware('auth');
+Route::post('/configuracion/eliminar/{id}',[configuracionCotroller::class, 'eliminarmercancia'])->name('configuracion.eliminar')->middleware('auth');
+
+// cantidad
+Route::post('/configuracion/nuevo/cantidad',[configuracionCotroller::class, 'addtipocantidad'])->name('configuracion.addtipocantidad')->middleware('auth');
+Route::post('/configuracion/editcantidad/{id}',[configuracionCotroller::class, 'edittipocantidad'])->name('configuracion.edittipocantidad')->middleware('auth');
+Route::post('/configuracion/eliminar-cantidad/{id}',[configuracionCotroller::class, 'eliminarcantidad'])->name('configuracion.eliminarcantidad')->middleware('auth');
+
+//logo sitio
+Route::post('/subir-imagen',[configuracionCotroller::class, 'logoimagen'])->name('configuracion.logoimagen')->middleware('auth');
+
+//usuarios
+Route::get('/usuarios', [usuariosController::class, 'index'])->name('usuarios.index');
+Route::post('/usuarios/nuevo',[usuariosController::class, 'addusuarios'])->name('usuarios.addusuarios');
+Route::post('/usuarios/editusuarios/{id}',[usuariosController::class, 'editusuarios'])->name('usuarios.editusuarios');
+Route::post('/usuarios/eliminar-usuarios/{id}',[usuariosController::class, 'eliminarusuarios'])->name('usuarios.eliminarusuarios');
+Route::post('/usuarios/activar-usuarios/{id}',[usuariosController::class, 'activarusuarios'])->name('usuarios.activarusuarios');
