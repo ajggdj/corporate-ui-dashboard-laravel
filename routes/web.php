@@ -11,6 +11,7 @@ use App\Http\Controllers\configuracionCotroller;
 use App\Http\Controllers\usuariosController;
 use App\Http\Controllers\EmployeesCotroller;
 use App\Http\Controllers\reportController;
+use App\Http\Controllers\StockController;
 
 
 /*
@@ -124,12 +125,21 @@ Route::post('/import', [EmployeesCotroller::class,"import"])->name('empleados.im
 Route::get('/export-empleados',[EmployeesCotroller::class,'exportEmpleados'])->name('exportEmpleados')->middleware('auth');
 
 //reportes
-Route::get('/reportes', [reportController::class, 'index'])->name('report.index');
-Route::get('/reportesmaquinaria', [reportController::class, 'indexmaquinaria'])->name('report.indexmaquinaria');
-Route::get('/detalles/{id}', [reportController::class, 'detalles'])->name('report.detalles');
-Route::get('/detalles/maquinaria/{id}', [reportController::class, 'detallesmaquina'])->name('report.detallesmaquina');
-Route::post('/guardarFecha/{id}', [reportController::class, 'detallesmaquinafecha'])->name('report.detallesmaquinafecha');
-Route::get('generate-pdf/{id}', [reportController::class, 'generatePDF'])->name('report.pdf');
-Route::get('generate-pdf-normal/{id}', [reportController::class, 'generatePDFnormal'])->name('report.generatePDFnormal');
-Route::post('/eliminardetalle/{id}', [reportController::class, 'eliminardetalle'])->name('report.eliminardetalle');
-Route::post('/eliminardetallemaquina/{id}', [reportController::class, 'eliminardetallemaquina'])->name('report.eliminardetallemaquina');
+Route::get('/reportes', [reportController::class, 'index'])->name('report.index')->middleware('auth');
+Route::get('/reportesmaquinaria', [reportController::class, 'indexmaquinaria'])->name('report.indexmaquinaria')->middleware('auth');
+Route::get('/detalles/{id}', [reportController::class, 'detalles'])->name('report.detalles')->middleware('auth');
+Route::get('/detallesmaquinaria/{id}', [reportController::class, 'detallesmaquina'])->name('report.detallesmaquina')->middleware('auth');
+Route::post('/guardarFecha/{id}', [reportController::class, 'detallesmaquinafecha'])->name('report.detallesmaquinafecha')->middleware('auth');
+Route::get('generate-pdf/{id}', [reportController::class, 'generatePDF'])->name('report.pdf')->middleware('auth');
+Route::get('generate-pdf-normal/{id}', [reportController::class, 'generatePDFnormal'])->name('report.generatePDFnormal')->middleware('auth');
+Route::post('/eliminardetalle/{id}', [reportController::class, 'eliminardetalle'])->name('report.eliminardetalle')->middleware('auth');
+Route::post('/eliminardetallemaquina/{id}', [reportController::class, 'eliminardetallemaquina'])->name('report.eliminardetallemaquina')->middleware('auth');
+
+//Inventario
+Route::get('/inventario', [StockController::class, 'index'])->name('stock.index');
+Route::get('stock_add', [StockController::class, 'add'])->name('stock.add');
+Route::post('nuevo_producto', [StockController::class, 'addprodcuto'])->name('stock.nuevoproducto');
+Route::get('stock_edit/{id}', [StockController::class, 'edit'])->name('stock.edit');
+Route::post('stock_edit/actualizar/{id}', [StockController::class, 'update'])->name('stock.updatedit');
+Route::post('stock_eliminar/eliminar/{id}', [StockController::class, 'eliminar'])->name('stock.elminar');
+Route::post('stock_activo/{id}', [StockController::class, 'activo'])->name('stock.activo');

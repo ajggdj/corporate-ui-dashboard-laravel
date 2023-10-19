@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="d-md-flex align-items-center mb-3 mx-2">
                         <div class="mb-md-0 mb-3">
-                            <h3 class="font-weight-bold mb-0">Ordenes</h3>
+                            <h3 class="font-weight-bold mb-0">Inventario</h3>
                         </div>
                     </div>
                 </div>
@@ -17,6 +17,15 @@
                 <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
                     <div class="card shadow-xs border">
                         <div class="card-header border-bottom pb-0">
+                            <div class="d-sm-flex align-items-center mb-3">
+                                <div class="ms-auto d-flex">
+                                    <button type="button"
+                                        class="btn btn-sm btn-dark btn-icon d-flex align-items-center mb-0">
+                                        <i class="fa-solid fa-plus" style="font-size: 15px; padding-right:15px;"></i>
+                                        <span class="btn-inner--text"> Nuevo producto</span>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="pb-3 d-sm-flex align-items-center">
                                 <div class="input-group w-sm-25 ms-auto">
                                     <span class="input-group-text text-body">
@@ -28,24 +37,32 @@
                                             </path>
                                         </svg>
                                     </span>
-                                    <input id="buscar" type="text" class="form-control" placeholder="Buscar...">
+                                    <input type="text" class="form-control" placeholder="Search">
                                 </div>
                             </div>
                         </div>
                         <div class="card-body px-0 py-0">
                             <div class="table-responsive p-0">
-                                <table id="tabla" class="table align-items-center justify-content-center mb-0">
+                                <table class="table align-items-center justify-content-center mb-0">
                                     <thead class="bg-gray-100">
                                         <tr>
                                             <th class="text-secondary text-xs font-weight-semibold opacity-7">
                                                 #</th>
                                             <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
-                                                Numero de Empleado</th>
+                                                Imagen</th>
                                             <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
-                                                Numero de Orden
+                                                Nombre
                                             </th>
                                             <th class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
-                                                Fecha de Orden</th>
+                                                Cantidad</th>
+                                            <th
+                                                class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
+                                                Observaciones
+                                            </th>
+                                            <th
+                                                class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
+                                                Tipo de Producto
+                                            </th>
                                             <th
                                                 class="text-secondary text-xs font-weight-semibold opacity-7 ps-2">
                                                 Acciones
@@ -53,31 +70,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($unicos as $key => $report)
                                         <tr>
                                             <td>
-                                                {{ $key+1 }}
                                             </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td class="align-middle">
 
-                                            <td>
-                                                {{ $report->numero_empleado}}
-                                            </td>
-                                            <td>
-                                                {{$report->numero_orden}}
                                             </td>
                                             <td class="align-middle">
-                                                {{ $report->fecha_salida}}
-                                            </td>
-                                            <td class="align-middle">
-                                                <a class="mb-0 btn btn-sm btn-white me-2" href="{{ route('report.detalles',$report->numero_orden) }}"><i class="fa-regular fa-eye" style="font-size: 15px;"></i> Ver Detalles</a>
+
                                             </td>
                                         </tr>
-                                        @endforeach
                                     </tbody>
                                 </table>
-                                <div class="d-flex justify-content-center border-top py-3 px-3 d-flex align-items-center">
-                                    {!! $unicos->links() !!}
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,22 +93,5 @@
             </div>
         </div>
     </main>
-    <script>
-        var busqueda = document.getElementById('buscar');
-      var table = document.getElementById("tabla").tBodies[0];
 
-      buscaTabla = function(){
-        texto = busqueda.value.toLowerCase();
-        var r=0;
-        while(row = table.rows[r++])
-        {
-          if ( row.innerText.toLowerCase().indexOf(texto) !== -1 )
-            row.style.display = null;
-          else
-            row.style.display = 'none';
-        }
-      }
-
-      busqueda.addEventListener('keyup', buscaTabla);
-  </script>
 </x-app-layout>

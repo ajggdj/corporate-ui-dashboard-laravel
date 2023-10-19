@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="d-md-flex align-items-center mb-3 mx-2">
                         <div class="mb-md-0 mb-3">
-                            <h3 class="font-weight-bold mb-0">Ordenes</h3>
+                            <h3 class="font-weight-bold mb-0">Ordenes Maquinaria</h3>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                                             </path>
                                         </svg>
                                     </span>
-                                    <input id="buscar" type="text" class="form-control" placeholder="Buscar...">
+                                    <input id="buscar" type="text" class="form-control" placeholder="Search">
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($unicos as $key => $report)
+                                        @foreach ($maquinaria as $key => $report)
                                         <tr>
                                             <td>
                                                 {{ $key+1 }}
@@ -69,14 +69,14 @@
                                                 {{ $report->fecha_salida}}
                                             </td>
                                             <td class="align-middle">
-                                                <a class="mb-0 btn btn-sm btn-white me-2" href="{{ route('report.detalles',$report->numero_orden) }}"><i class="fa-regular fa-eye" style="font-size: 15px;"></i> Ver Detalles</a>
+                                                <a class="mb-0 btn btn-sm btn-white me-2" href="{{ route('report.detallesmaquina',$report->numero_orden) }}"><i class="fa-regular fa-eye" style="font-size: 15px;"></i> Ver Detalles</a>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                                 <div class="d-flex justify-content-center border-top py-3 px-3 d-flex align-items-center">
-                                    {!! $unicos->links() !!}
+                                    {!! $maquinaria->links() !!}
                                 </div>
                             </div>
                         </div>
