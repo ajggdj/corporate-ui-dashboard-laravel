@@ -55,7 +55,7 @@ Route::get('/signin', function () {
     return view('account-pages.signin');
 })->name('signin');
 
-/*Route::get('/signup', function () {
+Route::get('/signup', function () {
     return view('account-pages.signup');
 })->name('signup')->middleware('guest');
 
@@ -64,7 +64,7 @@ Route::get('/sign-up', [RegisterController::class, 'create'])
     ->name('sign-up');
 
 Route::post('/sign-up', [RegisterController::class, 'store'])
-    ->middleware('guest');*/
+    ->middleware('guest');
 
 Route::get('/sign-in', [LoginController::class, 'create'])
     ->middleware('guest')
