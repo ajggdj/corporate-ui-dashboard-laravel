@@ -74,12 +74,12 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                                {{--<div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-4 text-xs mx-auto">
                                         Don't have an account?
                                         <a href="{{ route('sign-up') }}" class="text-dark font-weight-bold">Sign up</a>
                                     </p>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                         <div class="col-md-6">

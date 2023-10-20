@@ -169,7 +169,6 @@
                 </div>
             </div>
 
-            <x-app.footer />
         </div>
         <!-- Modal de usuarios-->
 <div class="modal fade" id="staticBackdrop-usuarios" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

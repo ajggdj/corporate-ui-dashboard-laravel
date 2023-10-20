@@ -54,6 +54,16 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
+    <style>
+        .navbar-vertical.navbar-expand-xs .navbar-collapse {
+            height: 100% !important;
+            overflow: hidden !important;
+
+        }
+        aside#sidenav-main{
+            overflow-y: hidden;
+        }
+    </style>
     @livewireStyles
 </head>
 
@@ -76,7 +86,7 @@
     @endif
 
     {{ $slot }}
-    <div class="fixed-plugin">
+   {{-- <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"></i>
         </a>
@@ -155,7 +165,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     <!--   Core JS Files   -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

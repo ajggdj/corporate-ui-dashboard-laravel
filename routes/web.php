@@ -31,7 +31,7 @@ Route::get('/', function () {
     return redirect('/dashboard');
 })->middleware('auth');
 
-Route::get('/dashboard', function () {
+/*Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
 
@@ -49,13 +49,13 @@ Route::get('/RTL', function () {
 
 Route::get('/profile', function () {
     return view('account-pages.profile');
-})->name('profile')->middleware('auth');
+})->name('profile')->middleware('auth');*/
 
 Route::get('/signin', function () {
     return view('account-pages.signin');
 })->name('signin');
 
-Route::get('/signup', function () {
+/*Route::get('/signup', function () {
     return view('account-pages.signup');
 })->name('signup')->middleware('guest');
 
@@ -64,7 +64,7 @@ Route::get('/sign-up', [RegisterController::class, 'create'])
     ->name('sign-up');
 
 Route::post('/sign-up', [RegisterController::class, 'store'])
-    ->middleware('guest');
+    ->middleware('guest');*/
 
 Route::get('/sign-in', [LoginController::class, 'create'])
     ->middleware('guest')
@@ -149,6 +149,6 @@ Route::post('stock_eliminar/eliminar/{id}', [StockController::class, 'eliminar']
 Route::post('stock_activo/{id}', [StockController::class, 'activo'])->name('stock.activo')->middleware('auth');
 
  //shop livewire
- Route::get('/shop', ShopComponent::class)->name('shop');
+ Route::get('/dashboard', ShopComponent::class)->name('shop');
  Route::get('/cart', CartComponent::class)->name('shop.cart');
  //Route::get('/checkout', CheckoutComponent::class)->name('shop.checkout');

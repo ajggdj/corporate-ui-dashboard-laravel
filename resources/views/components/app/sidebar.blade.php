@@ -4,8 +4,11 @@
             aria-hidden="true" id="iconSidenav"></i>
             @if (App\Models\ConfigSites::logo())
             <a class="navbar-brand d-flex align-items-center m-0"
-            href="·" target="_blank">
-                <img src="{{ asset('/logo/'.App\Models\ConfigSites::logo()->first()->opciones) }}" class="rounded mx-auto d-block" width="300" height="163">
+            href="·" target="_blank" style="    padding: 22px 10px 10px 10px;
+            ">
+                <img src="{{ asset('/logo/'.App\Models\ConfigSites::logo()->first()->opciones) }}" class="rounded mx-auto d-block" style="    width: 100%;
+                background-color: white;
+                height: 61px; max-height: none !important;">
             </a>
                 @else
                 <a class="navbar-brand d-flex align-items-center m-0"
@@ -15,11 +18,11 @@
                 @endif
 
     </div>
-    <div class="collapse navbar-collapse px-4  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse px-4  w-auto mt-3" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link  {{ is_current_route('dashboard') ? 'active' : '' }}"
-                    href="{{ route('dashboard') }}">
+                <a class="nav-link  {{ is_current_route('shop') ? 'active' : '' }}"
+                    href="{{ route('shop') }}">
                     <div
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"

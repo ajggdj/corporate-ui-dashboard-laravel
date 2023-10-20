@@ -61,11 +61,11 @@
                                             <td>
                                                 <div class="input-group quantity-selector quantity-selector-sm">
                                                     <input type="number" id="inputQuantitySelectorSm" class="form-control" aria-live="polite" data-bs-step="counter" name="quantity" title="quantity" value="{{$item->qty}}" min="0" max="10" step="1" data-bs-round="0" aria-label="Quantity selector">
-                                                    <button type="button" class="btn btn-icon btn-secondary btn-sm" aria-describedby="inputQuantitySelectorSm" data-bs-step="down" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')">
-                                                      <i class="bi bi-dash"></i>
+                                                    <button type="button" class="btn btn-icon btn-secondary btn-sm mb-0" aria-describedby="inputQuantitySelectorSm" data-bs-step="down" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')">
+                                                        <i class="fa-solid fa-minus" style="font-size: 10px;"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-icon btn-secondary btn-sm" aria-describedby="inputQuantitySelectorSm" data-bs-step="up" wire:click.prevent="increaseQuantity('{{$item->rowId}}')">
-                                                      <i class="bi bi-plus"></i>
+                                                    <button type="button" class="btn btn-icon btn-secondary btn-sm mb-0" aria-describedby="inputQuantitySelectorSm" data-bs-step="up" wire:click.prevent="increaseQuantity('{{$item->rowId}}')">
+                                                        <i class="fa-solid fa-plus" style="font-size: 10px;"></i>
                                                     </button>
                                                   </div>
                                             </td>
@@ -76,12 +76,22 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <h3>guardar datos</h3>
-                                <button class="btn btn-success" wire:click='Checkout'>
-                                  Guardar
-                                </button>
+                                <div class="d-flex justify-content-center border-top py-3 px-3 d-flex align-items-center">
+                                    <button class="btn btn-success" wire:click='Checkout'>
+                                        Guardar
+                                      </button>
+                                </div>
+
                               @else
-                              <p>No hay productos en el carrito</p>
+                              <div class="d-flex  border-top py-3 px-3 d-flex ">
+                                <p>No hay productos en el carrito</p>
+
+                            </div>
+                            <div class="d-flex justify-content-center border-top py-3 px-3 d-flex align-items-center">
+                                <a href="{{ route('shop') }}" class="btn btn-danger" wire:click='Checkout'>
+                                    Regresar
+                                </a>
+                            </div>
 
                               @endif
                             </div>

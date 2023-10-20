@@ -70,16 +70,19 @@ class CartComponent extends Component
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
         Cart::update($rowId,$qty);
+        return redirect()->route('shop.cart');
     }
     public function decreaseQuantity($rowId){
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
         Cart::update($rowId,$qty);
+        return redirect()->route('shop.cart');
     }
 
     public function destroy($id){
         Cart::remove($id);
         session()->flash('eliminado','se a eliminado con exito del carrito');
+        return redirect()->route('shop.cart');
     }
 
     public function render()

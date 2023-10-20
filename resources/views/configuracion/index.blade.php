@@ -266,7 +266,6 @@
                     </div>
                 </div>
             </div>
-            <x-app.footer />
         </div>
         <!-- Modal tipos de mercancia-->
 <div class="modal fade" id="staticBackdrop-mercancia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
