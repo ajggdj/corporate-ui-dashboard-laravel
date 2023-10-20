@@ -25,12 +25,14 @@ class StockController extends Controller
         ->where('baja_id',1)
         ->simplePaginate(15);
 
-        $baja = DB::table('stock')
-        ->join('types_measurement', 'types_measurement.id', '=' , 'stock.tipo_cantidad_id')
-        ->join('types_product', 'types_product.id', '=' , 'stock.tipo_mercancia_id')
-        ->select('stock.id as idstock','stock.nombre as producto','stock.cantidad','stock.observaciones','stock.imagen','types_product.nombre as herramienta','types_measurement.nombre as tipo')
-        ->where('baja_id',3)
-        ->simplePaginate(15);
+        $tipoMedicion = DB::select('select * from types_measurement');
+        $tipoMercancia = DB::select('select * from types_product');
+
+        //return $stock;
+        return view('stock.index',['stock' => $stock, 'tipoMedicion' => $tipoMedicion, 'tipoMercancia' => $tipoMercancia]);
+    }
+
+    public function indexpendientes(){
 
         $pendiente = DB::table('stock')
         ->join('types_measurement', 'types_measurement.id', '=' , 'stock.tipo_cantidad_id')
@@ -43,7 +45,22 @@ class StockController extends Controller
         $tipoMercancia = DB::select('select * from types_product');
 
         //return $stock;
-        return view('stock.index',['stock' => $stock, 'baja' => $baja, 'pendiente' => $pendiente, 'tipoMedicion' => $tipoMedicion, 'tipoMercancia' => $tipoMercancia]);
+        return view('stock.indexpendientes',['pendiente' => $pendiente, 'tipoMedicion' => $tipoMedicion, 'tipoMercancia' => $tipoMercancia]);
+    }
+    public function indexbaja(){
+
+        $baja = DB::table('stock')
+        ->join('types_measurement', 'types_measurement.id', '=' , 'stock.tipo_cantidad_id')
+        ->join('types_product', 'types_product.id', '=' , 'stock.tipo_mercancia_id')
+        ->select('stock.id as idstock','stock.nombre as producto','stock.cantidad','stock.observaciones','stock.imagen','types_product.nombre as herramienta','types_measurement.nombre as tipo')
+        ->where('baja_id',3)
+        ->simplePaginate(15);
+
+        $tipoMedicion = DB::select('select * from types_measurement');
+        $tipoMercancia = DB::select('select * from types_product');
+
+        //return $stock;
+        return view('stock.indexbaja',['baja' => $baja,'tipoMedicion' => $tipoMedicion, 'tipoMercancia' => $tipoMercancia]);
     }
 
     public function add(){

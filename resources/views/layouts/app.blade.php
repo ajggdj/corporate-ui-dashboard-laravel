@@ -1,17 +1,4 @@
-<!--
-=========================================================
-* Corporate UI - v1.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/corporate-ui
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,6 +54,7 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/corporate-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/349ee9c857.js" crossorigin="anonymous"></script>
+    @livewireStyles
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -88,7 +76,6 @@
     @endif
 
     {{ $slot }}
-
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"></i>
@@ -443,6 +430,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Corporate UI Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/corporate-ui-dashboard.min.js?v=1.0.0"></script>
+    @livewireScripts
 </body>
 
 </html>

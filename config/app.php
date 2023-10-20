@@ -172,6 +172,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -188,6 +190,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+
     ])->toArray(),
 
 ];

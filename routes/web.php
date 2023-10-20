@@ -12,6 +12,8 @@ use App\Http\Controllers\usuariosController;
 use App\Http\Controllers\EmployeesCotroller;
 use App\Http\Controllers\reportController;
 use App\Http\Controllers\StockController;
+use App\Livewire\ShopComponent;
+use App\Livewire\CartComponent;
 
 
 /*
@@ -136,10 +138,17 @@ Route::post('/eliminardetalle/{id}', [reportController::class, 'eliminardetalle'
 Route::post('/eliminardetallemaquina/{id}', [reportController::class, 'eliminardetallemaquina'])->name('report.eliminardetallemaquina')->middleware('auth');
 
 //Inventario
-Route::get('/inventario', [StockController::class, 'index'])->name('stock.index');
-Route::get('stock_add', [StockController::class, 'add'])->name('stock.add');
-Route::post('nuevo_producto', [StockController::class, 'addprodcuto'])->name('stock.nuevoproducto');
-Route::get('stock_edit/{id}', [StockController::class, 'edit'])->name('stock.edit');
-Route::post('stock_edit/actualizar/{id}', [StockController::class, 'update'])->name('stock.updatedit');
-Route::post('stock_eliminar/eliminar/{id}', [StockController::class, 'eliminar'])->name('stock.elminar');
-Route::post('stock_activo/{id}', [StockController::class, 'activo'])->name('stock.activo');
+Route::get('/inventario', [StockController::class, 'index'])->name('stock.index')->middleware('auth');
+Route::get('/pendientes', [StockController::class, 'indexpendientes'])->name('stock.indexpendientes')->middleware('auth');
+Route::get('/baja', [StockController::class, 'indexbaja'])->name('stock.indexbaja')->middleware('auth');
+Route::get('stock_add', [StockController::class, 'add'])->name('stock.add')->middleware('auth');
+Route::post('nuevo_producto', [StockController::class, 'addprodcuto'])->name('stock.nuevoproducto')->middleware('auth');
+Route::get('stock_edit/{id}', [StockController::class, 'edit'])->name('stock.edit')->middleware('auth');
+Route::post('stock_edit/actualizar/{id}', [StockController::class, 'update'])->name('stock.updatedit')->middleware('auth');
+Route::post('stock_eliminar/eliminar/{id}', [StockController::class, 'eliminar'])->name('stock.elminar')->middleware('auth');
+Route::post('stock_activo/{id}', [StockController::class, 'activo'])->name('stock.activo')->middleware('auth');
+
+ //shop livewire
+ Route::get('/shop', ShopComponent::class)->name('shop');
+ Route::get('/cart', CartComponent::class)->name('shop.cart');
+ //Route::get('/checkout', CheckoutComponent::class)->name('shop.checkout');
