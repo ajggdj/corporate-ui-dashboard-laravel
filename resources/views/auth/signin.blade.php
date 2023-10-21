@@ -79,9 +79,9 @@
                                         class="blur mt-12 p-4 text-center border border-white border-radius-md position-absolute fixed-bottom m-4">
                                         @if (App\Models\ConfigSites::logo())
                                         <a class="navbar-brand d-flex align-items-center m-0"
-                                        href="·" target="_blank" style="    padding: 22px 10px 10px 10px;
+                                        href="#" target="_blank" style="    padding: 22px 10px 10px 10px;
                                         ">
-                                            <img src="{{ asset('/logo/'.App\Models\ConfigSites::logo()->first()->opciones) }}" class="rounded mx-auto d-block" >
+                                            <img src="{{ asset('/logo/'.App\Models\ConfigSites::logo()->first()->opciones) }}" class="rounded mx-auto d-block img-fluid" >
                                         </a>
                                             @else
                                             <a class="navbar-brand d-flex align-items-center m-0"

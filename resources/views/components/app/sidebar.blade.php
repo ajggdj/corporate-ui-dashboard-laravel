@@ -4,7 +4,7 @@
             aria-hidden="true" id="iconSidenav"></i>
             @if (App\Models\ConfigSites::logo())
             <a class="navbar-brand d-flex align-items-center m-0"
-            href="·" target="_blank" style="    padding: 22px 10px 10px 10px;
+            href="#" target="_blank" style="    padding: 22px 10px 10px 10px;
             ">
                 <img src="{{ asset('/logo/'.App\Models\ConfigSites::logo()->first()->opciones) }}" class="rounded mx-auto d-block" style="    width: 100%;
                 background-color: white;

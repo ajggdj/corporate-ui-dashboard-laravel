@@ -23,8 +23,22 @@ class reportController extends Controller
 
     public function index(){
 
-        $unicos  = checkout::distinct()->join('employees','employees.id', '=', 'Idempleado')
-        ->select('checkout.id','numero_empleado','numero_orden','fecha_salida','fecha_entrega')->where('idmaquinaria_activo',0)->orderBy('id', "desc")->simplePaginate(10);
+        $unicos  = checkout::distinct('checkout.numero_orden')->join('employees','employees.id', '=', 'Idempleado')
+        ->select('checkout.id','numero_empleado','numero_orden','fecha_salida','fecha_entrega')->where('idmaquinaria_activo',0)->orderBy('id', "desc")->groupBy('checkout.numero_orden')->simplePaginate(10);
+        //return $unico = checkout::distinct('numero_orden')->get();
+
+        /*return $unicos = DB::table('employees')
+        ->select(
+            'checkout.id',
+            'checkout.numero_orden',
+            'checkout.fecha_salida',
+            'checkout.fecha_entrega',
+            'employees.numero_empleado'
+        )
+        ->join('checkout','checkout.Idempleado', '=', 'employees.id')
+        ->distinct('checkout.numero_orden')
+        ->groupBy('checkout.numero_orden')
+        ->get();*/
 
         $maquinaria = checkout::distinct()->join('employees','employees.id', '=', 'Idempleado')
         ->select('checkout.id','numero_empleado','numero_orden','fecha_salida')->where('idmaquinaria_activo',1)->orderBy('id', "desc")->simplePaginate(10);
@@ -47,10 +61,10 @@ class reportController extends Controller
     public function indexmaquinaria(){
 
         $unicos  = checkout::distinct()->join('employees','employees.id', '=', 'Idempleado')
-        ->select('checkout.id','numero_empleado','numero_orden','fecha_salida','fecha_entrega')->where('idmaquinaria_activo',0)->orderBy('id', "desc")->simplePaginate(10);
+        ->select('checkout.id','numero_empleado','numero_orden','fecha_salida','fecha_entrega')->where('idmaquinaria_activo',0)->orderBy('id', "desc")->groupBy('checkout.numero_orden')->simplePaginate(10);
 
         $maquinaria = checkout::distinct()->join('employees','employees.id', '=', 'Idempleado')
-        ->select('checkout.id','numero_empleado','numero_orden','fecha_salida')->where('idmaquinaria_activo',1)->orderBy('id', "desc")->simplePaginate(10);
+        ->select('checkout.id','numero_empleado','numero_orden','fecha_salida')->where('idmaquinaria_activo',1)->orderBy('id', "desc")->groupBy('checkout.numero_orden')->simplePaginate(10);
 
         /*$reporte = DB::table('checkout as ordenes')
         ->join('employees','employees.id', '=', 'ordenes.Idempleado')
